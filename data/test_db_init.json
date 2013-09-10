@@ -1,0 +1,8 @@
+{
+    "ReferencePipe":[
+        {"name": "1\" Tube", "quality": "tubing", "dnom_in": 1.0, "dact_in": 0.87},
+        {"name": "1\" SS", "quality": "stainless", "dnom_in": 1.0, "dact_in": 1.049},
+        {"name": "1\" CS", "quality": "carbon", "dnom_in": 1.0, "dact_in": 1.049}],
+
+    "ReferenceFluid": {"name" : "AWFI", "sg": 0.995, "viscosity": 0.7975, "tempC": 30}
+}

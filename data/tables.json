@@ -1,0 +1,14 @@
+{
+    "ReferencePipe":{
+        "name": "text",
+        "quality": "text",
+        "dnom_in": "float",
+        "dact_in": "float"
+    },
+    "ReferenceFluid": {
+        "name" : "text",
+        "sg": "float",
+        "viscosity": "float",
+        "tempC": "float"
+    }
+}
