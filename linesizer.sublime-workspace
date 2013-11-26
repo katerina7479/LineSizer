@@ -1,0 +1,292 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"table",
+				"tablecursor"
+			],
+			[
+				"co",
+				"copy"
+			],
+			[
+				"row",
+				"row_length"
+			],
+			[
+				"curso",
+				"cursor_end"
+			],
+			[
+				"bor",
+				"border_style"
+			],
+			[
+				"bo",
+				"border_style"
+			],
+			[
+				"fontkey",
+				"font_key"
+			],
+			[
+				"coor",
+				"coordinate"
+			],
+			[
+				"y",
+				"y_prime"
+			],
+			[
+				"y_re",
+				"_y_real"
+			],
+			[
+				"set",
+				"set_deltas"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 287.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/katerina/LineSizer/untitled.sublime-workspace",
+		"/Users/katerina/pypdflite/pypdflite/session.py",
+		"/Users/katerina/LineSizer/controller/session.py",
+		"/Users/katerina/LineSizer/controller/reporter.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfcolor.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfrow.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdftext.py",
+		"/Users/katerina/pypdflite/tabletest.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdftable.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfcellborder.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfcell.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfcursor.py",
+		"/Users/katerina/pypdflite/LinesTest.pdf",
+		"/Users/katerina/pypdflite/pypdflite/pdfdocument.py",
+		"/Users/katerina/pypdflite/texttest.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdffont.py",
+		"/Users/katerina/pypdflite/pypdflite/pdflite.py",
+		"/Users/katerina/pypdflite/__init__.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfline.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfmargin.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfrectangle.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfpage.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfobject.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/pdfcolorscheme.py",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/fontref.py",
+		"/Users/katerina/Library/Application Support/Sublime Text 2/Packages/AutoPEP8/AutoPep8.sublime-settings",
+		"/Users/katerina/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/katerina/pypdflite/pypdflite/pdfobjects/colorref.py",
+		"/Users/katerina/pypdflite/linetest.py",
+		"/Users/katerina/pypdflite/tests/cursortest.py",
+		"/Users/katerina/pypdflite/unittests.py",
+		"/Users/katerina/Library/Application Support/Sublime Text 2/Packages/AutoPEP8/Default (OSX).sublime-keymap",
+		"/Users/katerina/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/katerina/pypdflite/.gitignore",
+		"/Users/katerina/Library/Application Support/Sublime Text 2/Packages/Pep8Lint/Pep8Lint.sublime-settings",
+		"/Users/katerina/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/katerina/Library/Application Support/Sublime Text 2/Packages/Pep8Lint/Default (OSX).sublime-keymap",
+		"/Users/katerina/Library/Application Support/Sublime Text 2/Packages/User/Pep8Lint.sublime-settings",
+		"/Users/katerina/pypdflite/main.py",
+		"/Users/katerina/pypdflite/tests/pagetest.py",
+		"/Users/katerina/pypdflite/tests/fonttest.py",
+		"/Users/katerina/Downloads/mog/index.php",
+		"/Users/katerina/Documents/website/testsite/index.hml",
+		"/Users/katerina/Downloads/mog/style.css",
+		"/Users/katerina/Documents/website/testsite/stylesheet.css",
+		"/Users/katerina/Documents/website/testsite/jquery.js",
+		"/Users/katerina/Documents/website/index.html",
+		"/Users/katerina/Documents/website/script.js",
+		"/Users/katerina/Documents/website/style.css"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"print",
+			"F",
+			"font_family",
+			"_normalize_text",
+			"_get_text_color_string",
+			"document",
+			"setInformation",
+			"setCompression",
+			"self.SS",
+			"rect",
+			"Rect",
+			"rect",
+			"drawHorizonalLine",
+			"drawRectangle",
+			"endcursor",
+			"colorscheme",
+			"addLine",
+			"addIndent",
+			"colorscheme",
+			"ColorScheme",
+			"colorscheme",
+			"ColorScheme",
+			"colorscheme",
+			"ColorScheme",
+			"colorscheme",
+			"_setNumber",
+			"_addObject",
+			"self.SS",
+			"ss",
+			"SS",
+			"ss",
+			"SS",
+			"ss",
+			"SS",
+			"addNewline",
+			"addPage",
+			"_setDefaultFont",
+			"_setDefaults",
+			"fontkey",
+			"fontsize",
+			"setFont",
+			"addPage",
+			"getFont",
+			"addIndent",
+			"setFont",
+			"addNewline",
+			"addText",
+			"getdocument",
+			"setInformation",
+			"Document",
+			"Writer",
+			"Document",
+			"addLine",
+			"Writer",
+			"addIndent",
+			"setFont",
+			"getFont",
+			"addPage",
+			"addText",
+			"addNewline",
+			"Document",
+			"Writer"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

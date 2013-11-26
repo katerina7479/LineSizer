@@ -1,7 +1,5 @@
-# I decided to store global items here.
-# If an object needs the path to the main directory, to make absolute paths
-# I can get it here.
-# Also, a single DatabaseManager, and Creator.
+# Single place for global scoped objects
+# Provides a single DatabaseManager, and Creator.
 # Also, the order of the imports is important, so don't try to
 # neaten them up.
 
@@ -11,13 +9,13 @@ import os
 _PATH = os.path.dirname(os.path.abspath(__file__))
 
 from controller.database_manager import DatabaseManager
-DM = DatabaseManager()
+database_manager = DatabaseManager()
 
 from controller.database_creator import DatabaseCreator
-DC = DatabaseCreator(DM)
+database_creator = DatabaseCreator()
 
 from controller.test_db_creator import TestDatabaseCreator
-TDC = TestDatabaseCreator()
+test_database_creator = TestDatabaseCreator()
 
 from controller.session import Session
-SS = Session(DM)
+session = Session()

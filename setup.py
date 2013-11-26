@@ -1,13 +1,10 @@
-from kglobals import DC, TDC
+from kglobals import database_creator
 
 
-def run():
-    DC.CreateDatabase()
-    DC.InitializeDatabase()
-
-    TDC.CreateDatabase()
-    TDC.InitializeDatabase()
+def setup():
+    database_creator.create_database()
+    database_creator.initialize_database()
 
 
 if __name__ == "__main__":
-    run()
+    setup()

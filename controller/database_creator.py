@@ -1,38 +1,37 @@
 import os
 from utils import myjson
-from kglobals import _PATH
+from kglobals import _PATH, database_manager
 
 
 class DatabaseCreator():
-    def __init__(self, DM):
-        self.databasePath = _PATH + "\\data\\database\\project.sqlite3"
-        self.table_path = _PATH + "\\data\\tables.json"
-        self.table_init_path = _PATH + "\\data\\db_init.json"
-        self.DM = DM
+    def __init__(self):
+        self._database_path = _PATH + '/database/project.sqlite3'
+        self.table_path = _PATH + '/setup/tables.json'
+        self.table_init_path = _PATH + '/setup/db_init.json'
 
-    def CreateDatabase(self):
+    def create_database(self):
         try:
-            self._DeleteDatabase()
+            self._delete_database()
         except:
             pass
-        self.tabledata = myjson.GetData(self.table_path)
-        self.DM.CreateTables(self.tabledata)
+        self.tabledata = myjson.get_data(self.table_path)
+        database_manager.create_tables(self.tabledata)
 
-    def InitializeDatabase(self):
-        self.initdata = myjson.GetData(self.table_init_path)
-        self._AddData()
+    def initialize_database(self):
+        self.initial_data = myjson.get_data(self.table_init_path)
+        self._add_data()
 
-    def _AddData(self):
-        for tablename in self.initdata:
-            test = self.initdata[tablename]
-            if type(test) == list:
+    def _add_data(self):
+        for tablename in self.initial_data:
+            test = self.initial_data[tablename]
+            if isinstance(test, list):
                 for dic in test:
-                    self.DM.Add(tablename, dic)
-            elif type(test) == dict:
-                self.DM.Add(tablename, test)
+                    database_manager.add(tablename, dic)
+            elif isinstance(test, dict):
+                database_manager.add(tablename, test)
 
-    def _DeleteDatabase(self):
+    def _delete_database(self):
         try:
-            os.remove(self.databasePath)
+            os.remove(self._database_path)
         except OSError:
-            print "Did not remove database"
+            raise Exception('Did not remove database')

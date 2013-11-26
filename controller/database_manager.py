@@ -5,98 +5,96 @@ from kglobals import _PATH
 class DatabaseManager():
     def __init__(self, path=None):
         if path is None:
-            self.SetPath(False)
+            self.set_path()
         else:
             self.path = path
 
-    def SetPath(self, mytest):
-        if mytest is True:
-            self.path = _PATH + "\\data\\database\\test.sqlite3"
-        elif mytest is False:
-            self.path = _PATH + "\\data\\database\\project.sqlite3"
+    def set_path(self):
+        try:
+            self.path = _PATH + '/database/project.sqlite3'
         else:
-            print "Path is %s" % _PATH
-            raise Exception("Cannot initialize database")
+            raise Exception('Cannot initialize database')
 
-    def _CreateConnection(self):
+    def _create_connection(self):
         self.connection = sqlite3.connect(self.path)
-        self.c = self.connection.cursor()
+        self.cursor = self.connection.cursor()
 
-    def Save(self):
+    def save(self):
         self.connection.commit()
 
-    def _CloseConnection(self):
+    def _close_connection(self):
         self.connection.close()
         self.connection = None
-        self.c = None
+        self.cursor = None
 
-    def CreateTables(self, tabledata):
-        self._CreateConnection()
+    def create_tables(self, tabledata):
+        self._create_connection()
         for tablename, atts in tabledata.iteritems():
-            start = "CREATE TABLE %s (id INTEGER PRIMARY KEY, " % tablename
+            start = 'CREATE TABLE %s (id INTEGER PRIMARY KEY, ' % tablename
             temp = []
             for item in atts:
                 mytype = atts[item].upper()
-                temp.append("%s %s" % (item, mytype))
-            tempstr = ", ".join(temp)
-            command = start + tempstr + (");")
+                temp.append('%s %s' % (item, mytype))
+            tempstr = ', '.join(temp)
+            command = start + tempstr + (');')
             print command
-            self.c.execute(command)
-        self.Save()
-        self._CloseConnection()
+            self.cursor.execute(command)
+        self.save()
+        self._close_connection()
 
-    def GetTableList(self):
-        self._CreateConnection()
-        cursor = self.c.execute(
-            "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;")
-        tableslist = cursor.fetchall()
-        self._CloseConnection()
+    def get_table_list(self):
+        self._create_connection()
+        results = self.cursor.execute(
+            'SELECT name FROM sqlite_master\
+            WHERE type=\'table\' ORDER BY name;')
+        tableslist = results.fetchall()
+        self._close_connection()
         return tableslist
 
-    def GetColumns(self, tablename):
-        self._CreateConnection()
-        command = "PRAGMA table_info( %s );" % tablename
-        cursor = self.c.execute(command)
-        columns = cursor.fetchall()
-        self._CloseConnection()
+    def get_columns(self, tablename):
+        self._create_connection()
+        command = 'PRAGMA table_info( %s );' % tablename
+        results = self.cursor.execute(command)
+        columns = results.fetchall()
+        self._close_connection()
         colnames = []
         for col in columns:
             colnames.append(col[1])
         return colnames
 
-    def Delete(self, tablename, myid):
-        self._CreateConnection()
-        command = "DELETE FROM %s WHERE id == ?;" % tablename
-        self.c.execute(command, (myid,))
-        self.Save()
-        self._CloseConnection()
+    def delete(self, tablename, myid):
+        self._create_connection()
+        command = 'DELETE FROM %s WHERE id == ?;' % tablename
+        self.cursor.execute(command, (myid,))
+        self.save()
+        self._close_connection()
         pass
 
-    def Update(self, tablename, row, dic):
-        self._CreateConnection()
+    def update(self, tablename, row, dic):
+        self._create_connection()
         for key, value in dic.iteritems():
-            command = "UPDATE %s SET %s = ? WHERE id = ?;" % (tablename, key)
-            self.c.execute(command, (value, row))
-        self.Save()
-        self._CloseConnection()
+            command = 'UPDATE %s SET %s = ? WHERE id = ?;' % (tablename, key)
+            self.cursor.execute(command, (value, row))
+        self.save()
+        self._close_connection()
 
-    def Add(self, tablename, dic):
+    def add(self, tablename, dic):
         key = dic.keys()[0]
-        command = "INSERT INTO %s (%s) VALUES (?);" % (tablename, key)
+        command1 = 'INSERT INTO %s (%s) VALUES (?);' % (tablename, key)
         value = dic[key]
-        command2 = "SELECT last_insert_rowid();"
-        self._CreateConnection()
-        cursor = self.c.execute(command, (value,))
-        cursor = self.c.execute(command2)
-        myid = cursor.fetchone()
-        self.Save()
-        self._CloseConnection()
-        self.Update(tablename, myid[0], dic)
+        command2 = 'SELECT last_insert_rowid();'
+        self._create_connection()
+        self.cursor.execute(command1, (value,))
+        results = self.cursor.execute(command2)
+        myid = results.fetchone()
+        self.save()
+        self._close_connection()
+        self.update(tablename, myid[0], dic)
         return myid[0]
 
-    def _QueryTableAll(self, tablename):
-        columns = self.GetColumns(tablename)
-        values = self._QueryByColsAll(tablename, columns)
+    def _query_table_all(self, tablename):
+        columns = self.get_columns(tablename)
+        values = self._query_by_cols_all(tablename, columns)
         answerlist = []
         for row in values:
             answerdict = {}
@@ -107,61 +105,64 @@ class DatabaseManager():
                 i += 1
         return answerlist
 
-    def _QueryTableRow(self, tablename, row):
-        columns = self.GetColumns(tablename)
+    def _query_table_row(self, tablename, row):
+        columns = self.get_columns(tablename)
         answerdict = {}
-        self._CreateConnection()
+        self._create_connection()
         for col in columns:
-            command = "SELECT %s FROM %s WHERE id == ?;" % (col, tablename)
-            cursor = self.c.execute(command, (row,))
-            answer = cursor.fetchone()
+            command = 'SELECT %s FROM %s WHERE id == ?;' % (col, tablename)
+            results = self.c.execute(command, (row,))
+            answer = results.fetchone()
             answerdict[col] = answer[0]
-        self._CloseConnection()
+        self._close_connection()
         return answerdict
 
-    def _QueryByColsAll(self, tablename, colist):
-        collumns = ', '.join(colist)
-        command = "SELECT %s FROM %s;" % (collumns, tablename)
-        self._CreateConnection()
-        cursor = self.c.execute(command)
-        answerlist = cursor.fetchall()
-        self._CloseConnection()
+    def _query_by_cols_all(self, tablename, colist):
+        columns = ', '.join(colist)
+        command = 'SELECT %s FROM %s;' % (columns, tablename)
+        self._create_connection()
+        results = self.cursor.execute(command)
+        answerlist = results.fetchall()
+        self._close_connection()
         return answerlist
 
-    def _QueryColsWhere(self, tablename, colist, wheretup):
-        collumns = ', '.join(colist)
-        command = "SELECT %s FROM %s WHERE %s = ?;" % (collumns, tablename, wheretup[0])
-        self._CreateConnection()
-        cursor = self.c.execute(command, (wheretup[1],))
-        answerlist = cursor.fetchall()
-        self._CloseConnection()
+    def _query_cols_where(self, tablename, colist, wheretup):
+        columns = ', '.join(colist)
+        command = 'SELECT %s FROM %s WHERE %s = ?;' % \
+                  (columns, tablename, wheretup[0])
+        self._create_connection()
+        results = self.cursor.execute(command, (wheretup[1],))
+        answerlist = results.fetchall()
+        self._close_connection()
         return answerlist
 
-    def _QueryWhere(self, tablename, wheretup):
-        command = "SELECT id FROM %s WHERE %s = ?;" % (tablename, wheretup[0])
-        self._CreateConnection()
-        cursor = self.c.execute(command, (wheretup[1],))
-        rows = cursor.fetchall()
-        self._CloseConnection()
+    def _query_where(self, tablename, wheretup):
+        command = 'SELECT id FROM %s WHERE %s = ?;' % (tablename, wheretup[0])
+        self._create_connection()
+        results = self.cursor.execute(command, (wheretup[1],))
+        rows = results.fetchall()
+        self._close_connection()
         anslist = []
         for row in rows:
-            anslist.append(self._QueryTableRow(tablename, row[0]))
+            anslist.append(self._query_table_row(tablename, row[0]))
         return anslist
 
-    def Query(self, tablename, col=False, cols=False, row=False, wcol=False, wval=False):
+    def query(self, tablename, col=False, cols=False, row=False,
+              wcol=False, wval=False):
         if wcol is not False and wval is not False:
             if cols:
-                answers = self._QueryColsWhere(tablename, cols, (wcol, wval))
+                answers = self._query_cols_where(tablename, cols, (wcol, wval))
             elif col:
-                answers = self._QueryColsWhere(tablename, [col], (wcol, wval))
+                answers = self._query_cols_where(tablename,
+                                                 [col], (wcol, wval))
             else:
-                answers = self._QueryWhere(tablename, (wcol, wval))
+                answers = self._query_where(tablename, (wcol, wval))
         elif row:
-            answers = self._QueryTableRow(tablename, row)
+            answers = self._query_table_row(tablename, row)
         elif cols:
-            answers = self._QueryByColsAll(tablename, cols)
+            answers = self._query_by_cols_all(tablename, cols)
         elif col:
-            answers = self._QueryByColsAll(tablename, [col])
+            answers = self._query_by_cols_all(tablename, [col])
         else:
-            answers = self._QueryTableAll(tablename)
+            answers = self._query_table_all(tablename)
         return answers

@@ -1,7 +1,7 @@
 import json
 
 
-def GetData(path):
+def get_data(path):
     jsonfile = open(path)
     data = json.load(jsonfile)
     jsonfile.close()
