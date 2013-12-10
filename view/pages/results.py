@@ -1,22 +1,22 @@
 from PySide import QtGui
 from pages import Page
 from view.widgets.labelgrid import LabelGrid
-from kglobals import SS
 
 
 class ResultsPage(Page):
-    # I use this as a "dashboard", to quickly make an initial selection, like opening
-    # an existing project.
+    # I use this as a "dashboard", to quickly make an initial selection,
+    # like opening an existing project.
     def __init__(self, parent, name):
-        self.SS = SS
         super(ResultsPage, self).__init__(parent, name)
 
     def _setup(self):
-        self.headerlist = self.SS.getHeaders()
-        self.resultslist = self.SS.getResults()
+        self.headerlist = self.session.getHeaders()
+        self.resultslist = self.session.getResults()
 
-        self.input1text = 'Fluid = %s, Pipe = %s' % (self.SS.fluid.name, self.SS.pipe.quality)
-        self.input2text = 'Flowrate = %s, PipeLength = %s' % (self.SS.flowrate, self.SS.pipe.length)
+        self.input1text = 'Fluid = %s, Pipe = %s' % (self.session.fluid.name,
+                                                     self.session.pipe.quality)
+        self.input2text = 'Flowrate = %s, PipeLength = %s' %\
+                          (self.session.flowrate, self.session.pipe.length)
 
     def _header(self):
         label = QtGui.QLabel(
@@ -49,7 +49,8 @@ class ResultsPage(Page):
         clearbut.released.connect(self.on_exit)
         hbox.addWidget(clearbut)
 
-        hbox.addStretch(1)  # Moves boxes to the center, delete to right justify
+        hbox.addStretch(1)  # Moves boxes to the center,
+                            # delete to right justify
 
         self.layout.addLayout(hbox)
         self.layout.addStretch(1)
@@ -70,7 +71,7 @@ class ResultsPage(Page):
 
     def on_report(self):
         print "Generating Report"
-        self.SS.MakeReport()
+        self.session.MakeReport()
 
     def on_exit(self):
         self.PM.Quit()

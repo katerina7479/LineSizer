@@ -1,19 +1,16 @@
 from PySide import QtGui
 from pages import Page
-
 from view.widgets.form import Form
-from kglobals import SS
 
 
 class NewPage(Page):
 
     def __init__(self, parent, name):
         super(NewPage, self).__init__(parent, name)
-        self.SS = SS
 
     def _setup(self):
-        self.fluidlist = self.SS.fluidlist
-        self.qualitylist = self.SS.qualitylist
+        self.fluidlist = self.session.fluidlist
+        self.qualitylist = self.session.qualitylist
 
         self.formlist = [
             {"column": "fluid_id",
@@ -30,7 +27,8 @@ class NewPage(Page):
              }]
 
     def _header(self):
-        label = QtGui.QLabel('<font size=16 align="center">Non-Compressible Fluid Line Sizer</font>')
+        label = QtGui.QLabel('<font size=16 align="center">\
+                             Non-Compressible Fluid Line Sizer</font>')
         label.indent = 20
         self.layout.addWidget(label)
 
@@ -43,7 +41,8 @@ class NewPage(Page):
         hbox.addStretch(0.5)
 
         self.layout.addLayout(hbox)
-        self.layout.addStretch(1)  # Adds some space between the form and the footer buttons
+        self.layout.addStretch(1)  # Adds some space between the form
+                                   # and the footer buttons
 
     def _footer(self):
         hbox = QtGui.QHBoxLayout()
@@ -57,7 +56,8 @@ class NewPage(Page):
         clearbut.released.connect(self.on_clear)
         hbox.addWidget(clearbut)
 
-        hbox.addStretch(1)  # Moves boxes to the center, delete to right justify
+        hbox.addStretch(1)  # Moves boxes to the center,
+                            # delete to right justify
 
         self.layout.addLayout(hbox)
         self.layout.addStretch(1)
@@ -72,7 +72,7 @@ class NewPage(Page):
 
     def on_ok(self):
         formdata = self.form.getData()
-        self.SS.quality = formdata["quality_id"]
-        self.SS.fluid = formdata["fluid_id"]
+        self.session.quality = formdata["quality_id"]
+        self.session.fluid = formdata["fluid_id"]
 
         self.PM.ThisPage("Details")

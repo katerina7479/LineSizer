@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"re",
+				"request"
+			],
+			[
+				"curso",
+				"cursor_start"
+			],
+			[
+				"draw",
+				"drawRectangle"
+			],
+			[
+				"p",
+				"padding"
+			],
+			[
+				"rect",
+				"rectsize"
+			],
+			[
+				"form",
+				"FormView"
+			],
+			[
+				"get",
+				"get_context_data"
+			],
+			[
+				"d",
+				"django"
+			],
+			[
+				"_",
+				"_database_path"
+			],
+			[
+				"datab",
+				"database_manager"
+			],
+			[
+				"da",
+				"database_manager"
+			],
+			[
 				"table",
 				"tablecursor"
 			],
@@ -14,10 +58,6 @@
 			[
 				"row",
 				"row_length"
-			],
-			[
-				"curso",
-				"cursor_end"
 			],
 			[
 				"bor",
@@ -80,6 +120,32 @@
 	},
 	"file_history":
 	[
+		"/Users/katerina/bash scripts/togglehiddenfiles.sh",
+		"/Users/katerina/Programs/squares/question/views.py",
+		"/Users/katerina/Programs/squares/README.rst",
+		"/Users/katerina/Programs/squares/squares/urls.py",
+		"/Users/katerina/Programs/squares/question/templates/squares.html",
+		"/Users/katerina/Programs/squares/README",
+		"/Users/katerina/Programs/squares/squares/settings.py",
+		"/Users/katerina/Programs/squares/question/templates/form.html",
+		"/Users/katerina/Programs/squares/question/templates/base.html",
+		"/Users/katerina/Programs/squares/question/models.py",
+		"/Users/katerina/Programs/squares/.gitignore",
+		"/Users/katerina/Programs/squares/requirements.txt",
+		"/Users/katerina/Programs/squares/templates/squares.html",
+		"/Users/katerina/Programs/squares/templates/form.html",
+		"/Users/katerina/Programs/squares/templates/base.html",
+		"/Users/katerina/Programs/squares/question/admin.py",
+		"/Users/katerina/Programs/squares_project/squares/templates/home.html",
+		"/Users/katerina/Programs/squares_project/squares/templates/squares.html",
+		"/Users/katerina/Programs/squares_project/squares/mod/models.py",
+		"/Users/katerina/Programs/squares_project/squares/squares/urls.py",
+		"/Users/katerina/Programs/squares_project/squares/media/squares.js",
+		"/Users/katerina/Programs/squares_project/squares/squares/settings.py",
+		"/Users/katerina/Programs/squares_project/squares/mod/urls.py",
+		"/Users/katerina/Programs/squares_project/squares/mod/admin.py",
+		"/Users/katerina/Programs/squares_project/squares/templates/myform.html",
+		"/Users/katerina/Programs/squares_project/requirements.txt",
 		"/Users/katerina/LineSizer/untitled.sublime-workspace",
 		"/Users/katerina/pypdflite/pypdflite/session.py",
 		"/Users/katerina/LineSizer/controller/session.py",
@@ -147,6 +213,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"value",
+			"LoginForm",
+			"\">\n",
+			"\n",
+			"collumns",
+			"_QueryTableRow",
+			"_QueryWhere",
+			"_QueryColsWhere",
+			"_QueryByColsAll",
+			"_QueryTableAll",
+			"Add",
+			"Update",
+			"UPDATE",
+			"Update",
+			"DELETE",
+			"Delete",
+			"GetColumns",
+			"CreateTables",
+			"_CloseConnection",
+			"Save",
+			"_CreateConnection",
+			"SetPath",
+			"\"",
+			"ReferenceFluid",
+			"Query",
+			"self.DM",
+			"initdata",
+			"DM",
 			"print",
 			"F",
 			"font_family",
@@ -287,6 +381,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 235.0,
 	"status_bar_visible": true
 }

@@ -10,7 +10,7 @@ class Session(object):
     def __init__(self):
         self.pipelength = None
         self.flowrate = None
-        #self._setLists()
+        self._setLists()
 
     def _setLists(self):
         self.setfluidlist()
@@ -122,6 +122,6 @@ class Session(object):
         return resultslist
 
     def getHeaders(self):
-        headerlist = ["Ideal?", "Nominal Diameter", "Reynold's Number",
+        headerlist = ["Ideal?", "Nominal Diameter (in)", "Reynold's Number",
                       "Flow Region", "dP / 100 feet", "Velocity (ft/s)"]
         return headerlist

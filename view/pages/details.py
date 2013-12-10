@@ -2,14 +2,12 @@ from PySide import QtGui
 from pages import Page
 
 from view.widgets.form import Form
-from kglobals import SS
 
 
 class Details(Page):
 
     def __init__(self, parent, name):
         super(Details, self).__init__(parent, name)
-        self.SS = SS
 
     def _setup(self):
         self.formlist = [
@@ -26,7 +24,8 @@ class Details(Page):
         ]
 
     def _header(self):
-        label = QtGui.QLabel('<font size=16 align="center">NCF Line Sizer</font>')
+        label = QtGui.QLabel('<font size=16 align="center">\
+                              NCF Line Sizer</font>')
         label.indent = 20
         self.layout.addWidget(label)
 
@@ -39,7 +38,8 @@ class Details(Page):
         hbox.addStretch(0.5)
 
         self.layout.addLayout(hbox)
-        self.layout.addStretch(1)  # Adds some space between the form and the footer buttons
+        self.layout.addStretch(1)  # Adds some space between the
+                                   # form and the footer buttons
 
     def _footer(self):
         hbox = QtGui.QHBoxLayout()
@@ -53,7 +53,8 @@ class Details(Page):
         clearbut.released.connect(self.on_clear)
         hbox.addWidget(clearbut)
 
-        hbox.addStretch(1)  # Moves boxes to the center, delete to right justify
+        hbox.addStretch(1)  # Moves boxes to the center,
+                            # delete to right justify
 
         self.layout.addLayout(hbox)
         self.layout.addStretch(1)
@@ -68,8 +69,8 @@ class Details(Page):
 
     def on_ok(self):
         formdata = self.form.getData()
-        self.SS.flowrate = formdata["flowrate"]
-        self.SS.pipelength = formdata["length"]
-        self.SS.calculate()
+        self.session.flowrate = formdata["flowrate"]
+        self.session.pipelength = formdata["length"]
+        self.session.calculate()
 
         self.PM.ThisPage("Results")

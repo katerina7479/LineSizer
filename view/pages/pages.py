@@ -1,13 +1,13 @@
 from PySide.QtGui import QWidget
 from view.widgets.vbox import Vbox
-from kglobals import SS
+from kglobals import session
 
 
 class Page(QWidget):
 
     def __init__(self, pagemanager, name):
         super(Page, self).__init__()
-        self.SS = SS
+        self.session = session
         self.PM = pagemanager
         self.name = name
         self.resize(0, 0)
@@ -23,7 +23,8 @@ class Page(QWidget):
         self._center()
         self._footer()
         self.setLayout(self.layout)
-        #self.show() ***Don't do this on the initial build. Do on the refresh, or it will blink.
+        # self.show() ***Don't do this on the initial build.
+        # Do on the refresh, or it will blink.
 
     def _header(self):
         pass

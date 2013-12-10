@@ -16,25 +16,26 @@ class KMainWindow(QMainWindow):
         self._setPaths()
 
         self.actiondict = {
-            "open": self.on_open, "new": self.on_new, "database": self.on_database,
-            "exit": self.on_quit, "back": self.on_back, "next": self.on_next}
+            "open": self.on_open, "new": self.on_new,
+            "database": self.on_database, "exit": self.on_quit,
+            "back": self.on_back, "next": self.on_next}
 
         self.statusBar()
         self.PageManager = PageManager()
         self._config()
 
     def _setPaths(self):
-        self.menuConfigPath = self.path + "\\view\\menu_actions.json"
-        self.toolConfigPath = self.path + "\\view\\toolbar_actions.json"
+        self.menuConfigPath = self.path + "/view/menu_actions.json"
+        self.toolConfigPath = self.path + "/view/toolbar_actions.json"
 
     def sizeHint(self):
         return QtCore.QSize(800, 600)
 
     def _config(self):
-        self.menuconfigdata = myjson.GetData(self.menuConfigPath)
+        self.menuconfigdata = myjson.get_data(self.menuConfigPath)
         self._makeMenuBar()
         self.setCentralWidget(self.PageManager)
-        self.toolbarconfigdata = myjson.GetData(self.toolConfigPath)
+        self.toolbarconfigdata = myjson.get_data(self.toolConfigPath)
         self._makeToolBar()
 
     def _makeMenuBar(self):
@@ -91,7 +92,8 @@ class KMainWindow(QMainWindow):
                 newaction = "Separator"
             else:
                 try:
-                    newaction = QAction(QtGui.QIcon(atts["icon"]), atts["text"], self)
+                    newaction = QAction(QtGui.QIcon(atts["icon"]),
+                                        atts["text"], self)
                 except:
                     newaction = QAction(atts["text"], self)
                 try:

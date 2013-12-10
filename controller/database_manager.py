@@ -12,7 +12,7 @@ class DatabaseManager():
     def set_path(self):
         try:
             self.path = _PATH + '/database/project.sqlite3'
-        else:
+        except:
             raise Exception('Cannot initialize database')
 
     def _create_connection(self):
@@ -111,7 +111,7 @@ class DatabaseManager():
         self._create_connection()
         for col in columns:
             command = 'SELECT %s FROM %s WHERE id == ?;' % (col, tablename)
-            results = self.c.execute(command, (row,))
+            results = self.cursor.execute(command, (row,))
             answer = results.fetchone()
             answerdict[col] = answer[0]
         self._close_connection()
